@@ -1,0 +1,127 @@
+:root {
+    --primary-color: #009961;
+    --secondary-color: #09331B;
+
+    --accent-color: #3D348B;
+    --highlight-color: #9BA7C0;
+    --text-color-dark: var(--secondary-color); 
+    --text-color-light: #FFFFFF;
+
+    --topping-font-size: clamp(1rem, 1.5vw, 1.5rem);
+    --heading-font-size: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --subheading-font-size: 0.875rem;
+    --body-font-size: 1rem;
+
+    --section-padding: clamp(4rem, 7.75vw, 7.5rem) 1rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-synthesis: none;
+}
+
+.body-nav-toggle{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+strong{
+    font-weight: normal;
+}
+
+em{
+    font-style: normal;
+}
+
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.section{
+    height: fit-content;
+    width: 100%;
+    padding: var(--section-padding);
+}
+
+.topping-text{
+    font-family: var(--heading-font), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--topping-font-size);
+    line-height: 1.25;
+    letter-spacing: .01em;
+    max-width: 40rem;
+    font-weight: bolder;
+    text-transform: capitalize;
+    color: var(--v-highlight-color);
+    margin-bottom: 0.25rem;
+    display: block;
+    text-align: inherit;
+}
+
+.title{
+    font-family: var(--heading-font), "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--heading-font-size);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+    position: relative;
+    text-align: inherit;
+}
+
+.subheading-text{
+    font-family: var(--body-font), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+    font-size: var(--subheading-font-size);
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-wrap: pretty;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+}
+
+.text{
+    font-family: var(--body-font);
+    font-size: var(--body-font-size);
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-wrap: pretty;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+}
+
+.container{
+    max-width: 82.5rem; 
+    margin: auto;
+}
+
+.topping-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.full-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+.bg-image {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}

@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {ImportAvif, ImportWebP, ImportJpg} from '../_Scripts/build-scripts/ImageImporter.ts';
+import Hero from '../components/home-page/hero.astro';
+
+/* mobile imports need to be here, and it just makes sense to keep all the import in the same location for readability */
+/* so I am pasisng all of them */
+import BGImageMobile from '../assets/images/home-page/HomeHeroBackgroundMobile.jpg';
+import BGImageTablet from '../assets/images/home-page/HomeHeroBackgroundTablet.jpg';
+import BGImageDesktop from '../assets/images/home-page/HomeHeroBackgroundDesktop.jpg';
+
+const AvifBGMObject = await ImportAvif(BGImageMobile, BGImageMobile.width / 2, "low");
+const WebpBGMObject = await ImportWebP(BGImageMobile, BGImageMobile.width / 2, "low");
+const JpgBGMObject = await ImportJpg(BGImageMobile, BGImageMobile.width / 2, "low");
+
+const AvifBGTObject = await ImportAvif(BGImageTablet, BGImageTablet.width / 2, "medium");
+const WebpBGTObject = await ImportWebP(BGImageTablet, BGImageTablet.width / 2, "medium");
+const JpgBGTObject = await ImportJpg(BGImageTablet, BGImageTablet.width / 3, "medium");
+
+const AvifBGDObject = await ImportAvif(BGImageDesktop, BGImageDesktop.width, "medium");
+const WebpBGDObject = await ImportWebP(BGImageDesktop, BGImageDesktop.width, "medium");
+const JpgBGDObject = await ImportJpg(BGImageDesktop, BGImageDesktop.width / 3, "low");
+
+const mobileBGObjects = [AvifBGMObject, WebpBGMObject, JpgBGMObject];
+const tabletBGObjects = [AvifBGTObject, WebpBGTObject, JpgBGTObject];
+const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
+---
+
+<Layout>
+    <slot name="preload">
+        <!-- only preload the avif mobile image since it is the most likely candidate -->
+       <link rel="preload" href={mobileBGObjects[0].src} as="image" fetch-priority="high"/>
+       <link rel="preload" href="GrassStrip.svg" as="image"/>
+    </slot>
+    <Hero mobileBGObjects={mobileBGObjects} tabletBGObjects={tabletBGObjects} desktopBGObjects={desktopBGObjects}/>
+</Layout>

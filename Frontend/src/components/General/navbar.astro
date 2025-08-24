@@ -1,0 +1,175 @@
+---
+import '../../css/general/navbar.css';
+import { ImportAvif, ImportWebP, ImportPng, ImportJpg} from '../../_Scripts/build-scripts/ImageImporter';
+
+import FacebookLogo from '../../assets/images/social-media-logos/FacebookLogo.png'
+import YoutubeLogo from '../../assets/images/social-media-logos/YoutubeLogo.png';
+import InstagramLogo from '../../assets/images/social-media-logos/InstagramLogo.png';
+
+import Logo from '../../assets/images/misc/BoindyLogo.jpg';
+import LeafHighlight from '../../assets/images/misc/LeafPageHighlight.jpg';
+
+const AvifFacebookLogo = await ImportAvif(FacebookLogo, FacebookLogo.width / 5, "low");
+const WebpFacebookLogo = await ImportWebP(FacebookLogo, FacebookLogo.width / 5, "low");
+const PngFacebookLogo = await ImportPng(FacebookLogo, FacebookLogo.width / 10, "low");
+
+const AvifYoutubeLogo = await ImportAvif(YoutubeLogo, YoutubeLogo.width / 5, "low");
+const WebpYoutubeLogo = await ImportWebP(YoutubeLogo, YoutubeLogo.width / 5, "low");
+const PngYoutubeLogo = await ImportPng(YoutubeLogo, YoutubeLogo.width / 10, "low");
+
+const AvifInstagramLogo = await ImportAvif(InstagramLogo, InstagramLogo.width / 6, "low");
+const WebpInstagramLogo = await ImportWebP(InstagramLogo, InstagramLogo.width / 6, "low");
+const PngInstagramLogo = await ImportPng(InstagramLogo, InstagramLogo.width / 10, "low");
+
+const AvifLogo = await ImportAvif(Logo, Logo.width, "medium");
+const WebpLogo = await ImportWebP(Logo, Logo.width, "medium");
+const PngLogo = await ImportJpg(Logo, Logo.width, "medium");
+
+const AvifLeafHighlight = await ImportAvif(LeafHighlight, LeafHighlight.width, "medium");
+const WebpLeafHighlight = await ImportWebP(LeafHighlight, LeafHighlight.width, "medium");
+const PngLeafHighlight = await ImportJpg(LeafHighlight, LeafHighlight.width, "medium");
+
+const facebookLogoSources = [AvifFacebookLogo, WebpFacebookLogo, PngFacebookLogo];
+const youtubeLogoSources = [AvifYoutubeLogo, WebpYoutubeLogo, PngYoutubeLogo];
+const instagramLogoSources = [AvifInstagramLogo, WebpInstagramLogo, PngInstagramLogo];
+const LogoSources = [AvifLogo, WebpLogo, PngLogo];
+const LeafSources = [AvifLeafHighlight, WebpLeafHighlight, PngLeafHighlight];
+
+const {path} = Astro.params;
+---
+
+
+<div id="nav-bar">
+    <div id="top-resource-bar" class="flex">
+        <address class="flex contact-wrapper">
+            <div class="flex contact-data">
+                <div class="icon-wrapper">
+                    <img class="full-image" src="/icons/google-icons/MailIcon.svg" alt="" decoding="async" loading="lazy" fetch-priority="low"/>
+                </div>
+                <small class="data-text">example123@email.com</small>
+            </div>
+            <div class="flex contact-data">
+                <div class="icon-wrapper">
+                    <img class="full-image" src="/icons/google-icons/PinDropIcon.svg" alt="" loading="lazy" decoding="async"/>
+                </div>
+                <small class="data-text">123 Tyler, Texas</small>
+            </div>
+        </address>
+        <div id="time-detail" class="flex contact-data">
+            <div class="icon-wrapper">
+                <img class="full-image" src="/icons/google-icons/Clock.svg" alt="" loading="lazy" decoding="async" fetch-priority="low"/>
+            </div>
+            <small>Mon-Fri; 9am to 7pm / Sat; 10am to 4pm</small>
+        </div>
+        <div id="socials-container" class="flex">
+            <a class="icon-wrapper social-link" href="https://www.Google.com" target="_blank" rel="nofollow">
+                <picture>
+                    {
+                        facebookLogoSources.map((logo) => (
+                            <source srcset={logo.src}/>
+                        ))
+                    }
+                    <img class="full-image" src={facebookLogoSources[1].src} alt="visit our facebook page" loading="lazy" decoding="async" fetch-priority="low"/>
+                </picture>
+            </a>
+            <a class="icon-wrapper social-link" href="https://www.Google.com" target="_blank" rel="nofollow">
+                <picture>
+                    {
+                        instagramLogoSources.map((logo) => (
+                            <source srcset={logo.src}/>
+                        ))
+                    }
+                    <img class="full-image" src={facebookLogoSources[1].src} alt="take a peek at our instagram gallery" loading="lazy" decoding="async" fetch-priority="low"/>
+                </picture>
+            </a>
+            <a class="icon-wrapper social-link" href="https://www.Google.com" target="_blank" rel="nofollow">
+                <img class="full-image" src="/icons/social-media-icons/XLogo.svg" alt="scroll through our X account" loading="lazy" decoding="async" fetch-priority="low"/>
+            </a>
+            <a class="icon-wrapper social-link" href="https://www.Google.com" target="_blank" rel="nofollow">
+                <picture>
+                    {
+                        youtubeLogoSources.map((logo) => (
+                            <source srcset={logo.src}/>
+                        ))
+                    }
+                    <img class="full-image" src={youtubeLogoSources[1].src} alt="check out our youtube channel" loading="lazy" decoding="async" fetch-priority="low"/>
+                </picture>
+            </a>
+        </div>
+        <div id="grass-container"/>
+    </div>
+    <nav id="navigation" class="flex">
+        <div class="logo-container">
+            <div class="logo-wrapper">
+                <picture>
+                    {
+                        LogoSources.map((logo) => (
+                            <source srcset={logo.src}/>
+                        ))
+                    }
+                    <img class="full-image" src={LogoSources[1].src} alt="logo leaves swirling around the company name" decoding="async" loading="lazy" fetch-priority="low"/>
+                </picture>
+            </div>
+        </div>
+        <ul id="navbar-links-container" class="flex">
+            <li class="link-wrapper">
+                <a href="/" class="nav-link">
+                    <div class="icon-wrapper link-icon">
+                        {
+                            path == "/" && (
+                                <picture>
+                                    {
+                                        LeafSources.map((leaf) => (
+                                            <source srcset={leaf.src}/>
+                                        ))
+                                    }
+                                    <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                                </picture>
+                            )
+                        }
+                    </div>
+                    Home
+                </a>
+            </li>
+            <li class="link-wrapper">
+                <a href="/about">
+                    <div class="icon-wrapper link-icon">
+                        {
+                            path == "/about" && (
+                                <picture>
+                                    {
+                                        LeafSources.map((leaf) => (
+                                            <source srcset={leaf.src}/>
+                                        ))
+                                    }
+                                    <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                                </picture>
+                            )
+                        }
+                    </div>
+                    About Us
+                </a>
+            </li>
+            <li class="link-wrapper">
+                <button id="service-button" class="nav-link">
+                    Services
+                </button>
+                <ul class="drop-menu">
+                    <li>
+                        <a href="">
+                            Mowing & Weed Eating
+                        </a>
+                        <a href="">
+                            Hedge Trimming
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="link-wrapper">
+                <a href="/contact" id="contact-link" class="nav-link">
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

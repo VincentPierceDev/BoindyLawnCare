@@ -1,0 +1,139 @@
+@media(min-width: 0px)
+{
+    #nav-bar .flex {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #nav-bar #top-resource-bar {
+        background-color: var(--secondary-color);
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 1rem;
+        position: relative;
+        z-index: 1;
+        overflow-y: hidden; /* hiding the grass */
+    }
+
+    #nav-bar .contact-wrapper {
+        padding: 0.75rem 0rem;
+    }
+
+    #nav-bar .contact-data {
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    #nav-bar #time-detail {
+        margin-right: auto;
+        margin-left: 0.75rem;
+    }
+
+    #nav-bar address {
+        font-style: normal;
+        gap: 1rem;
+    }
+
+    #nav-bar small {
+        display: none;
+    }
+
+    #nav-bar #socials-container {
+        background-color: var(--primary-color);
+        align-items: center;
+        gap: clamp(1rem, 8vw, 1.5rem);
+        padding: 0.75rem;
+    }
+
+    #nav-bar .social-link,
+    #nav-bar .icon-wrapper {
+        max-width: clamp(1rem, 8vw, 1.5rem);
+        max-height: clamp(1rem, 8vw, 1.5rem);
+        width: clamp(1rem, 8vw, 1.5rem);
+        height: clamp(1rem, 8vw, 1.5rem);
+    }
+
+    #nav-bar #grass-container {
+        position: absolute;
+        left: 0;
+        bottom: -10%;
+        width: 100%;
+        height: 100%;
+        background-image: url(/GrassStrip.svg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        filter: brightness(0) saturate(100%) invert(51%) sepia(61%) saturate(5420%) hue-rotate(135deg) brightness(87%) contrast(101%);
+        z-index: -1;
+        opacity: 0.35;
+    }
+
+    #navigation .logo-container {
+        width: 20rem;
+        padding: 1rem 6rem 1rem 4rem;
+        background-color: var(--primary-color);
+        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+    }
+
+    #navigation ul {
+        list-style: none;
+    }
+}
+
+@media(min-width: 768px)
+{
+    #nav-bar #time-detail
+    {
+        margin-right: 1rem;
+    }
+
+    #nav-bar #top-resource-bar
+    {
+        padding-left: 1rem;
+    }
+
+    #nav-bar small {
+        display: inline-block;
+        font-family: var(--body-font), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+        color: var(--text-color-light);
+        font-size: clamp(0.5rem, 1.15vw, 1rem);
+    }
+
+    #nav-bar #time-detail {
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+
+    #nav-bar #socials-container {
+        padding: 0.75rem 4.25rem;
+    }
+
+    #nav-bar #grass-container {
+        background-size: 50%;
+        background-repeat: repeat-x;
+    }
+}
+
+@media(min-width: 1024px)
+{
+
+    #nav-bar #top-resource-bar
+    {
+        padding-left: 4.25rem;
+    }
+
+    #nav-bar #time-detail
+    {
+        margin-right: 3.8rem;
+    }
+
+    #nav-bar #grass-container {
+        background-size: 30%;
+    }
+}
+
+@media(min-width: 1250px)
+{
+    #nav-bar #grass-container {
+        background-size: 20%;
+    }
+}

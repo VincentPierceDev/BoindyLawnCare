@@ -1,0 +1,40 @@
+@media(min-width: 0px)
+{
+    .page-button {
+        padding: 1.375rem 2.5rem;
+        border-radius: 0.313rem;
+        color: var(--text-color-light);
+        width: fit-content;
+        text-shadow: -1px 1px 1px rgba(0, 0, 0, .5);
+        text-decoration: none;
+    }
+
+    .primary-button {
+        background: var(--primary-color);
+        transition: .2s ease-out background-color;
+    }
+
+    .secondary-button {
+        outline: 2px solid var(--highlight-color);
+        transition: .2s ease-out background-color, .2s ease-out outline-color;
+    }
+
+    @media(pointer: fine)
+    {
+        .page-button:hover {
+            cursor: pointer;
+            text-shadow: none;
+        }
+
+        .primary-button:hover {
+            background-color: var(--secondary-color);
+            transition: .2s ease background-color;
+        }
+
+        .secondary-button:hover {
+            background-color: var(--accent-color);
+            outline-color: rgba(155, 167, 192, 0);
+            transition: .2s ease background-color, .2s ease-in-out outline-color;
+        }
+    }
+}

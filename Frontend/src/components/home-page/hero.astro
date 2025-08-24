@@ -1,0 +1,40 @@
+---
+import '../../css/home-page/hero.css';
+import ButtonLink from '../General/button-link.astro';
+
+const {mobileBGObjects, tabletBGObjects, desktopBGObjects} = Astro.props as any;
+---
+
+<section id="home-hero-section" class="section">
+    <div class="bg-image">
+        <picture>
+            {
+                mobileBGObjects.map((img: any) => (
+                    <source media="(max-width: 768px)" srcset={img.src}/>
+                ))
+            }
+            {
+                tabletBGObjects.map((img: any) => (
+                    <source media="(max-width: 1024px)" srcset={img.src}/>
+                ))
+            }
+            {
+                desktopBGObjects.map((img: any) => (
+                    <source media="(min-width: 1025px)" srcset={img.src}/>
+                ))
+            }
+            <img class="full-image" src={tabletBGObjects[1].src} alt="wide view of a beautifully landscaped garden" loading="eager" decoding="async" fetch-priority="high"/>
+        </picture>
+    </div>
+    <div class="container hero-content">
+        <span id="hero-topping" class="topping-text">East Texas Expert Landscaping</span>
+        <h1 id="page-header">Bringing The Perfect Lawn To <br/> <span>Your Home.</span></h1>
+        <p id="mission-statement" class="text">Boindy Lawn Care delivers expert mowing, hedge trimming, sprinkler repair, and complete yard maintenance across East Texas. Our mission is to enhance curb appeal, ensure healthy lawns, and provide dependable Landscaping solutions.</p>
+        <div class="button-wrapper">
+            <ButtonLink href="/about" primary={true}>Discover More</ButtonLink>
+            <ButtonLink href="/contact" primary={false}>Contact Us</ButtonLink>
+        </div>
+        <div class="ring"/>
+    </div>
+    <div class="grass-wrapper"/>
+</section>

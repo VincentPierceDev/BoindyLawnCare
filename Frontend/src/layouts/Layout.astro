@@ -1,0 +1,37 @@
+---
+import {Font} from "astro:assets";
+import globalStyles from '../css/global.css?url';
+import navbarStyles from '../css/general/navbar.css?url';
+
+import Navbar from "../components/General/navbar.astro";
+
+const currentRoute = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator}/>
+
+		<Font cssVariable="--heading-font" preload/>
+		<Font cssVariable="--body-font" preload/>
+
+		<slot name="preload"/>
+		<link rel="preload" href={globalStyles} as="style"/>
+		<link rel="stylesheet" href={globalStyles}/>
+		<!-- 
+		<link rel="preload" href={navbarStyles} as="style"/>
+		<link rel="stylesheet" href={navbarStyles}/> -->
+
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<header>
+			<Navbar path={currentRoute}/>
+		</header>
+		<slot />
+	</body>
+</html>

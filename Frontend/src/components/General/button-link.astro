@@ -1,0 +1,7 @@
+---
+import '../../css/general/button-link.css';
+const {href, primary} = Astro.props;
+---
+
+
+<a href={href} class=`text page-button ${primary ? 'primary-button' : 'secondary-button'}`><slot/></a>
