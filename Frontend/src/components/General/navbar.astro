@@ -35,10 +35,14 @@ const instagramLogoSources = [AvifInstagramLogo, WebpInstagramLogo, PngInstagram
 const LogoSources = [AvifLogo, WebpLogo, PngLogo];
 const LeafSources = [AvifLeafHighlight, WebpLeafHighlight, PngLeafHighlight];
 
-const {path} = Astro.params;
+const {path} = Astro.props;
+console.log(path);
 ---
 
+<script src="/Scripts/NavBar.js" defer></script>
 
+<!-- lazy loading all images because the hero image is resource intensive -->
+<!-- so just doing everything possible to allocate as many resources as possible to it -->
 <div id="nav-bar">
     <div id="top-resource-bar" class="flex">
         <address class="flex contact-wrapper">
@@ -107,63 +111,68 @@ const {path} = Astro.params;
                             <source srcset={logo.src}/>
                         ))
                     }
-                    <img class="full-image" src={LogoSources[1].src} alt="logo leaves swirling around the company name" decoding="async" loading="lazy" fetch-priority="low"/>
+                    <img id="logo" class="full-image" src={LogoSources[1].src} alt="logo leaves swirling around the company name" decoding="async" loading="lazy" fetch-priority="low"/>
                 </picture>
             </div>
         </div>
-        <ul id="navbar-links-container" class="flex">
+        <button id="mobile-nav-button" aria-expanded="false" aria-controls="navbar-links-container">
+            <span id="top-bar" class="bar" aria-hidden="true"></span>
+            <span id="middle-bar" class="bar" aria-hidden="true"></span>
+            <span id="bottom-bar" class="bar" aria-hidden="true"></span>
+        </button>
+        <ul id="navbar-links-container">
             <li class="link-wrapper">
-                <a href="/" class="nav-link">
-                    <div class="icon-wrapper link-icon">
-                        {
-                            path == "/" && (
-                                <picture>
-                                    {
-                                        LeafSources.map((leaf) => (
-                                            <source srcset={leaf.src}/>
-                                        ))
-                                    }
-                                    <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
-                                </picture>
-                            )
-                        }
-                    </div>
-                    Home
-                </a>
+                {
+                    path == "/" && (
+                        <picture>
+                            {
+                                LeafSources.map((leaf) => (
+                                    <source srcset={leaf.src}/>
+                                ))
+                            }
+                            <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                        </picture>
+                    )
+                }
+                <a href="/" class="nav-link">Home</a>
             </li>
             <li class="link-wrapper">
-                <a href="/about">
-                    <div class="icon-wrapper link-icon">
-                        {
-                            path == "/about" && (
-                                <picture>
-                                    {
-                                        LeafSources.map((leaf) => (
-                                            <source srcset={leaf.src}/>
-                                        ))
-                                    }
-                                    <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
-                                </picture>
-                            )
-                        }
-                    </div>
-                    About Us
-                </a>
+                {
+                    path == "/about-us" && (
+                        <picture>
+                            {
+                                LeafSources.map((leaf) => (
+                                    <source srcset={leaf.src}/>
+                                ))
+                            }
+                            <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                        </picture> 
+                    )
+                }
+                <a href="/about-us">About Us</a>
             </li>
-            <li class="link-wrapper">
-                <button id="service-button" class="nav-link">
-                    Services
-                </button>
-                <ul class="drop-menu">
-                    <li>
+            <li id="drop-wrapper" class="link-wrapper">
+                <div class="flex button-container">
+                    <button id="service-button" class="flex nav-link drop-button" aria-controls="service-menu" aria-expanded="false" aria-haspopup="true">
+                        <span>Services</span>
+                        <img src="/icons/google-icons/Chevron.svg" alt="" decoding="async" loading="lazy" fetch-priority="low" width="24"/>
+                    </button>
+                </div>
+                <ul id="service-menu" class="drop-menu" role="menu">
+                    <li role="menuitem">
                         <a href="">
-                            Mowing & Weed Eating
+                            Mowing & Whacking
                         </a>
+                    </li>
+                    <li role="menuitem">
                         <a href="">
                             Hedge Trimming
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="link-wrapper">
+                <a href="/blog">Blog</a>
             </li>
             <li class="link-wrapper">
                 <a href="/contact" id="contact-link" class="nav-link">

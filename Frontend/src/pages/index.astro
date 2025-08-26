@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import {ImportAvif, ImportWebP, ImportJpg} from '../_Scripts/build-scripts/ImageImporter.ts';
 import Hero from '../components/home-page/hero.astro';
+import AboutUs from '../components/home-page/about-us.astro';
 
 /* mobile imports need to be here, and it just makes sense to keep all the import in the same location for readability */
 /* so I am pasisng all of them */
@@ -33,4 +34,5 @@ const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
        <link rel="preload" href="GrassStrip.svg" as="image"/>
     </slot>
     <Hero mobileBGObjects={mobileBGObjects} tabletBGObjects={tabletBGObjects} desktopBGObjects={desktopBGObjects}/>
+    <AboutUs/>
 </Layout>

@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import path from 'path';
 
 export default defineConfig({
     publicDir: false, //prevent copying anything from public
@@ -7,7 +8,7 @@ export default defineConfig({
         emptyOutDir: true, //only clear Scripts subfolder
         rollupOptions: {
             input: {
-                //DropDownMenu: path.resolve(__dirname, 'src/_Scripts/NavBar/DropDownMenu.ts'),
+                NavBar: path.resolve(__dirname, 'src/_Scripts/Navbar.ts'),
             },
             output: {
                 entryFileNames: '[name].js',

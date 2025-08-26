@@ -42,11 +42,21 @@ export default defineConfig({
             name: "Roboto",
             cssVariable: "--body-font",
             variants: [
-                {
-                    src: ["./src/assets/fonts/Roboto.woff2"],
-                    weight: "[100, 200, 300, 400, 500, 600, 700, 800, 900]",
+               {
+                    src: ["./src/assets/fonts/roboto/custom-400.woff2"],
+                    weight: 400,
                     style: "normal"
-                }
+                },
+                {
+                    src: ["./src/assets/fonts/roboto/custom-700.woff2"],
+                    weight: 700,
+                    style: "normal"
+                },
+                {
+                    src: ["./src/assets/fonts/roboto/custom-900.woff2"],
+                    weight: 900,
+                    style: "normal"
+                } 
             ]
         }
     ]

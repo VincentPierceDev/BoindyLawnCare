@@ -1,0 +1,52 @@
+#about-us-section {
+    background-color: var(--primary-color);
+}
+
+#standout-card-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#standout-card-container .standout-card {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.875rem;
+    background-color: #F7F7F7;
+    border-radius: 0.313rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.25);
+
+    h2 {
+        font-family: var(--heading-font);
+        font-size: 1.5rem;
+        font-weight: 900;
+    }
+
+    .image-wrapper {
+        width: 5.625rem;
+        max-width: 5.625rem;
+        background-color: white;
+        padding: 1.563rem;
+        border-radius: 50%;
+        outline: 3px solid var(--primary-color);
+    }
+}
+
+#standout-card-container .standout-card::after {
+    content: "";
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--highlight-color);
+    position: absolute;
+    left: 88%;
+    bottom: -10%;
+}
+

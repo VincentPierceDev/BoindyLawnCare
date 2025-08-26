@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build:scripts": "vite build --config vite.scripts.config.js",
+    "build": "npm run build:scripts && astro build",
+    "dev:scripts": "vite build --config vite.scripts.config.js --watch",
     "preview": "astro preview",
     "astro": "astro"
   },

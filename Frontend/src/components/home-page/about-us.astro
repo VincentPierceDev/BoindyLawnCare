@@ -1,3 +1,75 @@
 ---
+import '../../css/home-page/about-us.css';
+import ButtonLink from '../General/button-link.astro';
+
+interface CardData {
+    title: string,
+    description: string,
+    img: string,
+}
+
+const firstCard: CardData = {
+    title: "Quality Services",
+    description: "We deliver reliable, professional lawn care for every beautiful yard.",
+    img: "/icons/google-icons/plant.svg"
+} as CardData;
+
+const secondCard: CardData = {
+    title: "Professional Team",
+    description: "Skilled experts dedicated to maintaining your lawn with precision care.",
+    img: "/icons/google-icons/person.svg"
+} as CardData;
+
+const thirdCard: CardData = {
+    title: "Quality Care",
+    description: "Exceptional attention, healthy growth, and lasting beauty for your lawn.",
+    img: "/icons/google-icons/shield-heart.svg"
+} as CardData;
+
+const cards: CardData[] = [firstCard, secondCard, thirdCard] as CardData[];
 
 ---
+
+<section id="about-us-section" class="section">
+    <div class="container">
+        <div id="standout-card-container">
+            {
+                cards.map((card) => (
+                    <div class="standout-card">
+                        <div>
+                            <h2 class="text">{card.title}</h2>
+                            <p class="subheading-text">{card.description}</p>
+                        </div>
+                        <div class="image-wrapper">
+                            <img class="full-image" src={card.img} alt="" loading="eager" decoding="async"/>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div id="about-container">
+            <div class="top-content">
+                <picture>
+
+                </picture>
+            </div>
+            <div class="bottom-content">
+                <span class="topping-text">About Us</span>
+                <h2 class="title">Our Lawn Services Built On Passion</h2>
+                <p class="text">We are passionate lawn care experts, delivering exceptional service and beautiful results for every yard, every season, every time. We live, eat, and breathe lawn care to provide you the greatest results!</p>
+                <ul class="about-list">
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+                <ButtonLink href="/about-us/" primary={true}>Discover More</ButtonLink>
+            </div>
+        </div>
+    </div>
+</section>
