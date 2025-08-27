@@ -1,6 +1,15 @@
 ---
 import '../../css/home-page/about-us.css';
+import { ImportAvif, ImportWebP, ImportJpg, ImportPng} from '../../_Scripts/build-scripts/ImageImporter';
 import ButtonLink from '../General/button-link.astro';
+
+import mainPhoto from '../../assets/images/home-page/HomeAboutPhoto.jpg';
+
+const mainPhotoAvif = await ImportAvif(mainPhoto, mainPhoto.width, 'high');
+const mainPhotoWebP = await ImportWebP(mainPhoto, mainPhoto.width, 'high');
+const mainPhotoJpg = await ImportJpg(mainPhoto, mainPhoto.width, 'high');
+
+const mainPhotoSources = [mainPhotoAvif, mainPhotoWebP, mainPhotoJpg];
 
 interface CardData {
     title: string,
@@ -50,26 +59,56 @@ const cards: CardData[] = [firstCard, secondCard, thirdCard] as CardData[];
         <div id="about-container">
             <div class="top-content">
                 <picture>
-
+                    {
+                        mainPhotoSources.map((src) => (
+                            <source srcset={src.src} />
+                        ))
+                    }
+                    <img id="main-about-image" class="full-image" src={mainPhotoJpg.src} alt="a man neatly trimming limbs off cluttered bushes" loading="lazy" decoding="async"/>
                 </picture>
             </div>
             <div class="bottom-content">
                 <span class="topping-text">About Us</span>
                 <h2 class="title">Our Lawn Services Built On Passion</h2>
-                <p class="text">We are passionate lawn care experts, delivering exceptional service and beautiful results for every yard, every season, every time. We live, eat, and breathe lawn care to provide you the greatest results!</p>
+                <p class="text section-statement">We are passionate lawn care experts, delivering exceptional service and beautiful results for every yard, every season, every time all around East Texas. We live, eat, and breathe any and all lawn care services to provide you the greatest results!</p>
                 <ul class="about-list">
-                    <li>
-
+                    <li class="about-element">
+                        <div class="image-wrapper">
+                            <img class="full-image" src="/icons/google-icons/plant.svg" alt="" loading="lazy" decoding="async"/>
+                        </div>
+                        <div>
+                            <h3 class="text">Free Estimates</h3>
+                            <p class="subheading-text">Get transparent, no-obligation quotes tailored to your lawn’s needs. We assess your property thoroughly and provide detailed estimates, ensuring you know exactly what to expect before any work begins.</p>
+                        </div>
                     </li>
-                    <li>
-
+                    <li id="middle-about-element" class="about-element">
+                        <div class="image-wrapper">
+                            <img class="full-image" src="/icons/google-icons/person.svg" alt="" loading="lazy" decoding="async"/>
+                        </div>
+                        <div>
+                            <h3 class="text">Modern Equipment</h3>
+                            <p class="subheading-text">We use advanced tools and technology to deliver efficient, high-quality lawn care. Our modern equipment ensures precise results, faster service, and a healthier, more beautiful lawn for you.</p>
+                        </div>
                     </li>
-                    <li>
-
+                    <li class="about-element">
+                        <div class="image-wrapper">
+                            <img class="full-image" src="/icons/google-icons/shield-heart.svg" alt="" loading="lazy" decoding="async"/>
+                        </div>
+                        <div>
+                            <h3 class="text">Dependable Results</h3>
+                            <p class="subheading-text">Consistent, reliable outcomes that keep your lawn healthy and beautiful, season after season. Trust us for dependable care and lasting results you can count on.</p>
+                        </div>
                     </li>
                 </ul>
-                <ButtonLink href="/about-us/" primary={true}>Discover More</ButtonLink>
+                <ButtonLink href="/about-us/" primary={false}>Discover More</ButtonLink>
             </div>
         </div>
+    </div>
+    <div id="floating-ring" aria-hidden="true"></div>
+    <div id="lettuce-wrapper">
+        <img class="full-image" src="/icons/lettuce.svg" alt="" loading="lazy" decoding="async"/>
+    </div>
+    <div id="flower-wrapper">
+        <img class="full-image" src="/icons/Flowers.svg" alt="" loading="lazy" decoding="async"/>
     </div>
 </section>

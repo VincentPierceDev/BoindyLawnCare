@@ -1,16 +1,21 @@
+@import "./fonts.css";
+
 :root {
     --primary-color: #009961;
     --secondary-color: #09331B;
+    --tertiary-color: #B7FDFE;
 
     --accent-color: #3D348B;
     --highlight-color: #9BA7C0;
     --text-color-dark: var(--secondary-color); 
     --text-color-light: #FFFFFF;
 
+    --heading-font: 'Raleway';
+    --body-font: 'Roboto';
     --topping-font-size: clamp(1rem, 1.5vw, 1.5rem);
     --heading-font-size: clamp(1.9375rem, 3.9vw, 3.0625rem);
     --subheading-font-size: 0.875rem;
-    --body-font-size: 1rem;
+    --body-font-size: 1.2rem;
 
     --section-padding: clamp(4rem, 7.75vw, 7.5rem) 1rem;
 }
@@ -58,7 +63,6 @@ em{
     line-height: 1.25;
     letter-spacing: .01em;
     max-width: 40rem;
-    font-weight: bolder;
     text-transform: capitalize;
     color: var(--v-highlight-color);
     margin-bottom: 0.25rem;

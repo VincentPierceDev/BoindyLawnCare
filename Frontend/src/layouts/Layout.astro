@@ -1,12 +1,9 @@
 ---
-import {Font} from "astro:assets";
 import globalStyles from '../css/global.css?url';
-import navbarStyles from '../css/general/navbar.css?url';
 
 import Navbar from "../components/General/navbar.astro";
 
 const currentRoute = Astro.url.pathname;
-console.log(currentRoute);
 ---
 
 <!doctype html>
@@ -17,15 +14,12 @@ console.log(currentRoute);
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator}/>
 
-		<Font cssVariable="--heading-font" preload/>
-		<Font cssVariable="--body-font" preload/>
-
 		<slot name="preload"/>
+		<link rel="preload" href="/fonts/raleway.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+		<link rel="preload" href="/fonts/roboto.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
 		<link rel="preload" href={globalStyles} as="style"/>
 		<link rel="stylesheet" href={globalStyles}/>
-		<!-- 
-		<link rel="preload" href={navbarStyles} as="style"/>
-		<link rel="stylesheet" href={navbarStyles}/> -->
+		
 
 		<title>Astro Basics</title>
 	</head>
