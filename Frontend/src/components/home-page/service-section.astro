@@ -1,0 +1,134 @@
+---
+import '../../css/home-page/service-section.css';
+import { ImportAvif, ImportWebP, ImportJpg } from '../../_Scripts/build-scripts/ImageImporter';
+import ButtonLink from '../General/button-link.astro';
+import ServiceCard from './utilities/service-card.astro';
+
+import GardenPhoto from '../../assets/images/home-page/service-photos/garden.jpg';
+import DesignPhoto from '../../assets/images/home-page/service-photos/design.jpg';
+import MaintanencePhoto from '../../assets/images/home-page/service-photos/maintanence.jpg';
+import FertilizePhoto from '../../assets/images/home-page/service-photos/fertilize.jpg';
+import StumpPhoto from '../../assets/images/home-page/service-photos/stump.jpg';
+import HardscapePhoto from '../../assets/images/home-page/service-photos/hardscaping.jpg';
+
+const ServiceOneAvif = await ImportAvif(GardenPhoto, GardenPhoto.width, "high");
+const ServiceOneWebp = await ImportWebP(GardenPhoto, GardenPhoto.width, "high");
+const ServiceOneJpg = await ImportJpg(GardenPhoto, GardenPhoto.width, "high");
+
+const ServiceTwoAvif = await ImportAvif(DesignPhoto, DesignPhoto.width, "high");
+const ServiceTwoWebp = await ImportWebP(DesignPhoto, DesignPhoto.width, "high");
+const ServiceTwoJpg = await ImportJpg(DesignPhoto, DesignPhoto.width, "high");
+
+const ServiceThreeAvif = await ImportAvif(MaintanencePhoto, MaintanencePhoto.width, "high");
+const ServiceThreeWebp = await ImportWebP(MaintanencePhoto, MaintanencePhoto.width, "high");
+const ServiceThreeJpg = await ImportJpg(MaintanencePhoto, MaintanencePhoto.width, "high");
+
+const ServiceFourAvif = await ImportAvif(FertilizePhoto, FertilizePhoto.width, "high");
+const ServiceFourWebp = await ImportWebP(FertilizePhoto, FertilizePhoto.width, "high");
+const ServiceFourJpg = await ImportJpg(FertilizePhoto, FertilizePhoto.width, "high");
+
+const ServiceFiveAvif = await ImportAvif(StumpPhoto, StumpPhoto.width, "high");
+const ServiceFiveWebp = await ImportWebP(StumpPhoto, StumpPhoto.width, "high");
+const ServiceFiveJpg = await ImportJpg(StumpPhoto, StumpPhoto.width, "high");
+
+const ServiceSixAvif = await ImportAvif(HardscapePhoto, HardscapePhoto.width, "high");
+const ServiceSixWebp = await ImportWebP(HardscapePhoto, HardscapePhoto.width, "high");
+const ServiceSixJpg = await ImportJpg(HardscapePhoto, HardscapePhoto.width, "high");
+
+
+const serviceOnePhotos = [ServiceOneAvif, ServiceOneWebp, ServiceOneJpg];
+const serviceTwoPhotos = [ServiceTwoAvif, ServiceTwoWebp, ServiceTwoJpg];
+const serviceThreePhotos = [ServiceThreeAvif, ServiceThreeWebp, ServiceThreeJpg];
+const serviceFourPhotos = [ServiceFourAvif, ServiceFourWebp, ServiceFourJpg];
+const serviceFivePhotos = [ServiceFiveAvif, ServiceFiveWebp, ServiceFiveJpg];
+const serviceSixPhotos = [ServiceSixAvif, ServiceSixWebp, ServiceSixJpg];
+
+interface card{
+    title: string,
+    description: string,
+    href: string,
+    img: any[],
+    icon: string,
+    altText: string
+}
+
+const cards: card[] = [
+    {
+        title: "Garden Overhauls",
+        description: "Revitalize your garden with a complete makeover for a fresh, vibrant look.",
+        href: '/mowing-and-whacking',
+        img: serviceOnePhotos,
+        icon: '/icons/farming.svg',
+        altText: 'waist high view of a beautiful garden'
+    },
+    {
+        title: "Landscape Design",
+        description: "Create stunning outdoor spaces with our expert landscape design services.",
+        href: '/mowing-and-whacking',
+        img: serviceTwoPhotos,
+        icon: '/icons/landscape-design.svg',
+        altText: 'backyard of a nice house with trees'
+    },
+    {
+        title: "Garden Maintenance",
+        description: "Keep your garden healthy and tidy with regular maintenance services.",
+        href: '/mowing-and-whacking',
+        img: serviceThreePhotos,
+        icon: '/icons/google-icons/plant.svg',
+        altText: 'wheelbarrow carrying landscaping equipment and organic material in front of bushes'
+    },
+    {
+        title: "Lawn Fertilization",
+        description: "Boost lawn health with professional fertilization for lush, green grass.",
+        href: '/mowing-and-whacking',
+        img: serviceFourPhotos,
+        icon: '/icons/fertilizer.svg',
+        altText: 'two hands planting a fresh seedling into the dirt'
+    },
+    {
+        title: "Stump & Weed Removal",
+        description: "Remove unwanted stumps and weeds for a cleaner, safer garden.",
+        href: '/mowing-and-whacking',
+        img: serviceFivePhotos,
+        icon: '/icons/tree-stump.svg',
+        altText: 'a long dead stump sitting beside a mossy creek bed'
+    },
+    {
+        title: "Stone & Hardscaping",
+        description: "Enhance your garden with elegant stonework and durable hardscaping.",
+        href: '/mowing-and-whacking',
+        img: serviceSixPhotos,
+        icon: '/icons/stone.svg',
+        altText: 'bricks and tools scattered about, in the process of building a walk way'
+    }
+] as card[];
+---
+
+
+<section id="service-section" class="section">
+    <div class="container">
+        <div class="text-content">
+            <div class="title-container">
+                <span class="topping-text">Services</span>
+                <h2 class="title">Extend Your Home With A Beautiful Garden</h2>
+            </div>
+            <div class="description-container">
+                <p class="text">
+                    Discover our expert landscaping services designed to transform your outdoor space into a stunning garden retreat. From design to maintenance, we bring your vision to life with creativity and care.
+                </p>
+                <ButtonLink href="/services" primary={true}>All Services</ButtonLink>
+            </div>
+            <img src="" alt="" loading="lazy" decoding="async"/>
+        </div>
+        <div class="service-card-container">
+            {
+                cards.map((card, idx) => (
+                    <ServiceCard id=`card-${idx + 1}` title={card.title} description={card.description} photos={card.img} icon={card.icon} href={card.href}/>
+                ))
+            }
+        </div>
+    </div>
+    <div id="service-flower-wrapper">
+        <img class="full-image" src="/icons/Flowers.svg" alt="" loading="lazy" decoding="async"/>
+    </div>
+</section>

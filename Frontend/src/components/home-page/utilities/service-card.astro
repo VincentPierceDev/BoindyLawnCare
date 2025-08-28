@@ -1,0 +1,32 @@
+---
+import '../../../css/home-page/utilities/service-card.css';
+const{id, title, description, icon, href, photos, altText} = Astro.props;
+---
+
+<div id={id} class="service-card">
+    <div class="image-wrapper">
+        <picture>
+            {
+                photos.map((photo: any) => (
+                    <source srcset={photo.src}/>
+                ))
+            }
+            <img class="full-image" src={photos[1].src} alt={altText} loading="lazy" decoding="async"/>
+        </picture>
+    </div>
+    <div class="icon-link-bar">
+        <div class="icon-wrapper">
+            <img class="full-image" src={icon} alt="">
+        </div>
+        <a href={href} class="icon-wrapper link">
+            <img src="/icons/google-icons/Arrow.svg" alt="">
+        </a>
+    </div>
+    <h3 class="text">
+        {title}
+    </h3>
+    <p class="subheading-text">
+        {description}
+    </p>
+    <div class="service-loop"/>
+</div>

@@ -1,0 +1,27 @@
+---
+import '../../../css/home-page/utilities/team-card.css';
+
+const {name, occupation, socialIcons, socialLinks} = Astro.props;
+---
+
+<!-- add images -->
+
+<div class="team-card">
+    <picture>
+
+    </picture>
+    <div class="name-plate">
+        <span class="name">{name}</span>
+        <br>
+        <span class="occuptaion">{occupation}</span>
+    </div>
+    <div id="social-links-container">
+        {
+            socialIcons.map((icon: any, idx: number) => (
+                <a id=`icon-${idx}` class="icon-wrapper" href={socialLinks[idx]}>
+                    <img src={icon.src} alt="" loading="lazy" decoding="async"/>
+                </a>
+            ))
+        }
+    </div>
+</div>

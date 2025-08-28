@@ -1,0 +1,17 @@
+@media(min-width: 0px){
+    #stat-section {
+        background-color: var(--secondary-color);
+    }
+
+    #stat-section .stat-list {
+        display: flex;
+        list-style: none;
+        color: var(--text-color-light);
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #stat-section .stat-item {
+        text-align: center;
+    }
+}

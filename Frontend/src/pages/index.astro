@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import {ImportAvif, ImportWebP, ImportJpg} from '../_Scripts/build-scripts/ImageImporter.ts';
 import Hero from '../components/home-page/hero.astro';
 import AboutUs from '../components/home-page/about-us.astro';
+import ServiceSection from '../components/home-page/service-section.astro';
+import WorkProcess from '../components/home-page/work-process.astro';
+import StatSection from '../components/home-page/stat-section.astro';
+import TeamSection from '../components/home-page/team-section.astro';
 
 /* mobile imports need to be here, and it just makes sense to keep all the import in the same location for readability */
 /* so I am pasisng all of them */
@@ -27,7 +31,7 @@ const tabletBGObjects = [AvifBGTObject, WebpBGTObject, JpgBGTObject];
 const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
 ---
 
-<Layout>
+<Layout title="Boindy Lawn Care">
     <slot name="preload">
         <!-- only preload the avif mobile image since it is the most likely candidate -->
        <link rel="preload" href={mobileBGObjects[0].src} as="image" fetch-priority="high"/>
@@ -35,4 +39,8 @@ const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
     </slot>
     <Hero mobileBGObjects={mobileBGObjects} tabletBGObjects={tabletBGObjects} desktopBGObjects={desktopBGObjects}/>
     <AboutUs/>
+    <ServiceSection/>
+    <WorkProcess/>
+    <StatSection/>
+    <TeamSection/>
 </Layout>

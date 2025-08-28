@@ -4,11 +4,17 @@ import { ImportAvif, ImportWebP, ImportJpg, ImportPng} from '../../_Scripts/buil
 import ButtonLink from '../General/button-link.astro';
 
 import mainPhoto from '../../assets/images/home-page/HomeAboutPhoto.jpg';
+import accentPhoto from '../../assets/images/home-page/Mowing.jpg';
 
 const mainPhotoAvif = await ImportAvif(mainPhoto, mainPhoto.width, 'high');
 const mainPhotoWebP = await ImportWebP(mainPhoto, mainPhoto.width, 'high');
 const mainPhotoJpg = await ImportJpg(mainPhoto, mainPhoto.width, 'high');
 
+const accentPhotoAvif = await ImportAvif(accentPhoto, accentPhoto.width, 'high');
+const accentPhotoWebP = await ImportWebP(accentPhoto, accentPhoto.width, 'high');
+const accentPhotoJpg = await ImportJpg(accentPhoto, accentPhoto.width, 'high');
+
+const accentPhotoSources = [accentPhotoAvif, accentPhotoWebP, accentPhotoJpg];
 const mainPhotoSources = [mainPhotoAvif, mainPhotoWebP, mainPhotoJpg];
 
 interface CardData {
@@ -58,14 +64,31 @@ const cards: CardData[] = [firstCard, secondCard, thirdCard] as CardData[];
         </div>
         <div id="about-container">
             <div class="top-content">
-                <picture>
-                    {
-                        mainPhotoSources.map((src) => (
-                            <source srcset={src.src} />
-                        ))
-                    }
-                    <img id="main-about-image" class="full-image" src={mainPhotoJpg.src} alt="a man neatly trimming limbs off cluttered bushes" loading="lazy" decoding="async"/>
-                </picture>
+                <div id="main-image-wrapper">
+                    <picture>
+                        {
+                            mainPhotoSources.map((src) => (
+                                <source srcset={src.src} />
+                            ))
+                        }
+                        <img id="main-about-image" class="full-image" src={mainPhotoSources[1].src} alt="a man neatly trimming limbs off cluttered bushes" loading="lazy" decoding="async"/>
+                    </picture>
+                </div>
+                <div id="accent-image-wrapper">
+                    <picture>
+                        {
+                            accentPhotoSources.map((src) => (
+                                <source srcset={src.src} />
+                            ))
+                        }
+                        <img id="main-about-image" class="full-image" src={accentPhotoSources[1].src} alt="low view angle of a person pushing a mower to cut grass" loading="lazy" decoding="async"/>
+                    </picture>
+                </div>
+                <span id="stat-wrapper">
+                    <em class="title years">40</em>
+                    <br>
+                    <em class="subheading-text">Years of Experience</em>
+                </span>
             </div>
             <div class="bottom-content">
                 <span class="topping-text">About Us</span>
