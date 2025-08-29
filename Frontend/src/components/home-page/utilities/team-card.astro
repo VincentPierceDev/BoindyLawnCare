@@ -1,15 +1,20 @@
 ---
 import '../../../css/home-page/utilities/team-card.css';
 
-const {name, occupation, socialIcons, socialLinks} = Astro.props;
+const {name, occupation, socialIcons, socialLinks, photos, id} = Astro.props;
 ---
 
-<!-- add images -->
-
-<div class="team-card">
-    <picture>
-
-    </picture>
+<div id={id} class="team-card">
+    <div class="image-wrapper">
+        <picture>
+            {
+                photos.map((photo: any) => (
+                    <source srcset={photo.src}/>
+                ))
+            }
+            <img class="full-image" src={photos[1].src} alt=`potrait of ${name}` loading="lazy" decoding="async"/>
+        </picture>
+    </div>
     <div class="name-plate">
         <span class="name">{name}</span>
         <br>

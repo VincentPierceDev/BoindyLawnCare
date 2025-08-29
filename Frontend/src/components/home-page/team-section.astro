@@ -1,18 +1,98 @@
 ---
 import '../../css/home-page/team-section.css';
+import { ImportAvif, ImportJpg, ImportWebP } from '../../_Scripts/build-scripts/ImageImporter';
 import ButtonLink from '../General/button-link.astro';
+import TeamCard from './utilities/team-card.astro';
+
+import ownerImage from '../../assets/images/misc/employee-photos/OwnerPhoto.jpg';
+import managerImage from '../../assets/images/misc/employee-photos/ManagerPhoto.jpg';
+import marketerImage from '../../assets/images/misc/employee-photos/HeadOfMarketingPhoto.jpg';
+import operationsImage from '../../assets/images/misc/employee-photos/OperationsHeadPhoto.jpg';
+
+const OwnerAvifObject = await ImportAvif(ownerImage, ownerImage.width, 'high');
+const OwnerWebpObject = await ImportWebP(ownerImage, ownerImage.width, 'high');
+const OwnerJpgObject = await ImportJpg(ownerImage, ownerImage.width, 'high');
+
+const ManagerAvifObject = await ImportAvif(managerImage, managerImage.width, 'high');
+const ManagerWebpObject = await ImportWebP(managerImage, managerImage.width, 'high');
+const ManagerJpgObject = await ImportJpg(managerImage, managerImage.width, 'high');
+
+const MarketerAvifObject = await ImportAvif(marketerImage, marketerImage.width, 'high');
+const MarketerWebpObject = await ImportWebP(marketerImage, marketerImage.width, 'high');
+const MarketerJpgObject = await ImportJpg(marketerImage, marketerImage.width, 'high');
+
+const OperationsAvifObject = await ImportAvif(operationsImage, operationsImage.width, 'high');
+const OperationsWebpObject = await ImportWebP(operationsImage, operationsImage.width, 'high');
+const OperationsJpgObject = await ImportJpg(operationsImage, operationsImage.width, 'high');
+
+const OwnerPhotos = [OwnerAvifObject, OwnerWebpObject, OwnerJpgObject];
+const ManagerPhotos = [ManagerAvifObject, ManagerWebpObject, ManagerJpgObject];
+const MarketerPhotos = [MarketerAvifObject, MarketerWebpObject, MarketerJpgObject];
+const OperationsPhotos = [OperationsAvifObject, OperationsWebpObject, OperationsJpgObject];
+
+interface CardDetails {
+    name: string,
+    occuptation: string,
+    socialLinks: string[],
+    socialIcons: any[],
+    photos: any
+}
+
+const employee1: CardDetails = {
+    name: "Joe Smoe",
+    occuptation: "Owner",
+    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
+    socialIcons: [''],
+    photos: OwnerPhotos
+} as CardDetails;
+
+const employee2: CardDetails = {
+    name: "Carol Cannigan",
+    occuptation: "Manager",
+    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
+    socialIcons: [''],
+    photos: ManagerPhotos
+}
+
+const employee3: CardDetails = {
+    name: "Fred Fraster",
+    occuptation: "Head of Marketing",
+    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
+    socialIcons: [''],
+    photos: MarketerPhotos
+}
+
+const employee4: CardDetails = {
+    name: "Sarah Jane",
+    occuptation: "Operations Head",
+    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
+    socialIcons: [''],
+    photos: OperationsPhotos
+}
+
+const employees: CardDetails[] = [employee1, employee2, employee3, employee4] as CardDetails[];
+
 ---
 
 <section id="team-section" class="section">
     <div class="container">
         <div class="flex">
             <div class="top-content">
-                <span class="topping-text">Team Members</span>
-                <h2 class="title">Meet Our Expert Landscaping Team</h2>
+                <div>
+                    <span class="topping-text">Team Members</span>
+                    <h2 class="title">Meet Our Expert Landscaping Team</h2>
+                </div>
                 <p class="text">
                     Discover our dedicated landscaping team serving East Texas. With years of experience and a passion for transforming outdoor spaces, our experts deliver exceptional results for residential and commercial properties. Trust us to enhance your landscape with professionalism and local expertise.
                 </p>
                 <ButtonLink href="/about-us" primary={true}>Meet Everyone</ButtonLink>
+            </div>
+            <div class="card-container">
+                {
+                    employees.map((employee, idx) => (
+                        <TeamCard id=`team-card-${idx + 1}` name={employee.name} occupation={employee.occuptation} socialIcons={employee.socialIcons} socialLinks={employee.socialLinks} photos={employee.photos}/>
+                    ))
+                }
             </div>
         </div>
     </div>

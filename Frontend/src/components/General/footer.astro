@@ -1,7 +1,67 @@
-<!-- <a href="https://www.flaticon.com/free-icons/lettuce" title="lettuce icons">Lettuce icons created by DinosoftLabs - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/flower" title="flower icons">Flower icons created by Xinh Studio - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/garden" title="garden icons">Garden icons created by ultimatearm - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/landscape" title="landscape icons">Landscape icons created by Witdhawaty - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/fertilizer" title="fertilizer icons">Fertilizer icons created by Good Ware - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/tree-stump" title="tree stump icons">Tree stump icons created by surang - Flaticon</a> -->
-<!-- <a href="https://www.flaticon.com/free-icons/grass" title="grass icons">Grass icons created by POD Gladiator - Flaticon</a> -->
+---
+import '../../css/General/footer.css';
+const {currentRoute} = Astro.props;
+---
+
+
+<section id="footer-section" class="section">
+    <div class="container">
+        <div class="flex">
+            <div class="branding">
+
+            </div>
+            <div class="link-column">
+                <span class="text list-title">Useful Links</span>
+                <ul class="links-list">
+                    <li>
+                        <a class="subheading-text" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="subheading-text" href="/about-us">About Us</a>
+                    </li>
+                    <li>
+                        <a class="subheading-text" href="/blog">Blog</a>
+                    </li>
+                    <li>
+                        <a class="subheading-text" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <span class="text list-title">Our Services</span>
+                <ul class="links-list">
+                    <li>
+                        <a class="subheading-text" href="">Mowing & Whacking</a>
+                    </li>
+                    <li>
+                        <a class="subheading-text" href="">Hedge Trimming</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="link-column">
+                <span class="text list-title">Contact</span>
+                <ul id="contact-list" class="links-list">
+                    <li class="contact-item">
+                        <span class="subheading-text">123 Street Tyler, TX 11111</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="subheading-text">123-321-0000</span>
+                    </li>
+                    <li class="contact-item">
+                        <span class="subheading-text">Example@email.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="footer-strip">
+    <div id="footer-strip-container" class="container">
+        <small class="title">Copyright &copy; 2025. Windy Pines Web Design LLC. All Rights Reserverd.</small>
+        <small class="legal-links">
+            <a class="title" href="/">Terms & Conditions</a>
+            <a class="title" href="/">Privacy Policy</a>
+        </small>
+    </div>
+</div>
+

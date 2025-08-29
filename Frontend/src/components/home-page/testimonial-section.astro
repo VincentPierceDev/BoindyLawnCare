@@ -1,0 +1,65 @@
+---
+import '../../css/home-page/testimonials.css';
+import { ImportAvif, ImportJpg, ImportWebP } from '../../_Scripts/build-scripts/ImageImporter';
+
+import BackgroundImageDesktop from '../../assets/images/home-page/CropBackgroundDesktop.jpg';
+import BackgroundImageTablet from '../../assets/images/home-page/CropBackgroundTablet.jpg';
+import BackgroundImageMobile from '../../assets/images/home-page/CropBackgroundMobile.jpg';
+
+const BgImageDesktopAvif = await ImportAvif(BackgroundImageDesktop, BackgroundImageDesktop.width, "high");
+const BgImageDesktopWebP = await ImportWebP(BackgroundImageDesktop, BackgroundImageDesktop.width, "high");
+const BgImageDesktopJpg = await ImportJpg(BackgroundImageDesktop, BackgroundImageDesktop.width, "high");
+
+const BgImageTabletAvif = await ImportAvif(BackgroundImageTablet, BackgroundImageTablet.width, "high");
+const BgImageTabletWebP = await ImportWebP(BackgroundImageTablet, BackgroundImageTablet.width, "high");
+const BgImageTabletJpg = await ImportJpg(BackgroundImageTablet, BackgroundImageTablet.width, "high");
+
+const BgImageMobileAvif = await ImportAvif(BackgroundImageMobile, BackgroundImageMobile.width, "high");
+const BgImageMobileWebP = await ImportWebP(BackgroundImageMobile, BackgroundImageMobile.width, "high");
+const BgImageMobileJpg = await ImportJpg(BackgroundImageMobile, BackgroundImageMobile.width, "high");
+
+
+
+const DesktopBgImages = [BgImageDesktopAvif, BgImageDesktopWebP, BgImageDesktopJpg];
+const TabletBgImages = [BgImageTabletAvif, BgImageTabletWebP, BgImageTabletJpg];
+const MobileBgImages = [BgImageMobileAvif, BgImageMobileWebP, BgImageMobileJpg];
+
+---
+
+
+<section id="testimonial-section" class="section">
+    <div class="container">
+        <div class="title-container">
+            <span class="topping-text">Testimonials</span>
+            <h2 class="title">Our Client Reviews</h2>
+        </div>
+        <div class="testimonial-card">
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod id odit ratione suscipit animi veniam nobis, aut facilis soluta voluptatibus similique deserunt qui, vitae ipsum corrupti labore? Reprehenderit aut necessitatibus repellat deserunt doloribus aliquam quia libero ipsum eius animi! Vel facilis quae aperiam alias itaque nemo vero dolorum atque.</p>
+            <div class="author-container">
+                <span class="title">Fiora Fernan</span>
+                <br>
+                <span class="text">Facebook</span>
+            </div>
+        </div>
+    </div>
+    <div class="bg-image background-image-wrapper">
+        <picture>
+            {
+                MobileBgImages.map((image) => (
+                    <source media="(max-width: 768px)" srcset={image.src}/>
+                ))
+            }
+            {
+                TabletBgImages.map((image) => (
+                    <source media="(max-width: 1024px)" srcset={image.src}/>
+                ))
+            }
+            {
+                DesktopBgImages.map((image) => (
+                    <source media="(min-width: 1025px)" srcset={image.src}/>
+                ))
+            }
+            <img class="full-image" src={TabletBgImages[1].src} alt="" loading="lazy" decoding="async"/>
+        </picture>
+    </div>
+</section>
