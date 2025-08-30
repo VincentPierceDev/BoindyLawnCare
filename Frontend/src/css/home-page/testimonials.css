@@ -3,7 +3,7 @@
     #testimonial-section {
         background-color: var(--tertiary-color);
         position: relative;
-        width: 100vw;
+        width: 100%;
         height: fit-content;
         z-index: 1;
     }

@@ -8,50 +8,63 @@ const {currentRoute} = Astro.props;
     <div class="container">
         <div class="flex">
             <div class="branding">
-
+                <div class="full-logo">
+                    <div class="logo-wrapper">
+                        <img class="full-image" src="/icons/BoindySmallLogo.svg" alt="" decoding="async" loading="lazy"/>
+                    </div>
+                    <span class="title">Boindy</span>
+                </div>
+                <p class="subheading-text description">Portfolio Site: Dedicated to delivering reliable, high-quality lawn care and landscaping services that enhance your outdoor spaces and bring your vision to life.</p>
             </div>
-            <div class="link-column">
-                <span class="text list-title">Useful Links</span>
-                <ul class="links-list">
-                    <li>
-                        <a class="subheading-text" href="/">Home</a>
-                    </li>
-                    <li>
-                        <a class="subheading-text" href="/about-us">About Us</a>
-                    </li>
-                    <li>
-                        <a class="subheading-text" href="/blog">Blog</a>
-                    </li>
-                    <li>
-                        <a class="subheading-text" href="/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="link-column">
-                <span class="text list-title">Our Services</span>
-                <ul class="links-list">
-                    <li>
-                        <a class="subheading-text" href="">Mowing & Whacking</a>
-                    </li>
-                    <li>
-                        <a class="subheading-text" href="">Hedge Trimming</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="link-column">
-                <span class="text list-title">Contact</span>
-                <ul id="contact-list" class="links-list">
-                    <li class="contact-item">
-                        <span class="subheading-text">123 Street Tyler, TX 11111</span>
-                    </li>
-                    <li class="contact-item">
-                        <span class="subheading-text">123-321-0000</span>
-                    </li>
-                    <li class="contact-item">
-                        <span class="subheading-text">Example@email.com</span>
-                    </li>
-                </ul>
-            </div>
+            <nav id="nav-container">
+                <div class="link-column">
+                    <span class="text list-title">Useful Links</span>
+                    <ul class="links-list">
+                        <li>
+                            <a class="subheading-text" href="/" aria-current={currentRoute === '/' ? 'true' : 'false'}>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a class="subheading-text" href="/about-us" aria-current={currentRoute === '/about-us' ? 'true' : 'false'}>About Us</a>
+                        </li>
+                        <li>
+                            <a class="subheading-text" href="/blog" aria-current={currentRoute === '/blog' ? 'true' : 'false'}>Blog</a>
+                        </li>
+                        <li>
+                            <a class="subheading-text" href="/contact" aria-current={currentRoute === '/contact' ? 'true' : 'false'}>Contact</a>
+                        </li>
+                        <li>
+                            <a href="subheading-text" href="/attributions" aria-current={currentRoute === '/attributions' ? 'true' : 'false'}>Attributions</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <span class="text list-title">Our Services</span>
+                    <ul class="links-list">
+                        <li>
+                            <a class="subheading-text" href="">Mowing & Whacking</a>
+                        </li>
+                        <li>
+                            <a class="subheading-text" href="">Hedge Trimming</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="link-column">
+                    <span class="text list-title">Contact</span>
+                    <ul id="contact-list" class="links-list">
+                        <li class="contact-item">
+                            <span class="subheading-text">123 Street Tyler, TX 11111</span>
+                        </li>
+                        <li class="contact-item">
+                            <span class="subheading-text">123-321-0000</span>
+                        </li>
+                        <li class="contact-item">
+                            <span class="subheading-text">Example@email.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </div>
 </section>

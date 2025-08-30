@@ -46,6 +46,7 @@ class NavButtonControls {
 
     constructor(navbar: HTMLUListElement) {
         this.hoveredButton = navbar.getElementsByClassName('drop-button')[0] as HTMLButtonElement;
+        this.dropList = navbar.getElementsByClassName('drop-menu')[0] as HTMLUListElement;
 
         this.hoveredButton.addEventListener('mousedown', (event) => {
           event.preventDefault();  
@@ -53,19 +54,22 @@ class NavButtonControls {
     }
 
     MobileClickControls(): void {
+        const nextMenu: HTMLLIElement = this.hoveredButton.parentElement?.parentElement?.parentElement?.querySelector('#next-link') as HTMLLIElement;
         this.hoveredButton.addEventListener('click', () => {
             const fullMenu: DropMenu = this.CollectMenu();
             if(fullMenu.button == null)
                 return;
 
             if(this.dropDownOpen) {
-                CollapseMenu(fullMenu);
-                this.hoveredButton.classList.remove("margin-adjustment");
+                nextMenu.classList.remove("margin-adjustment");
+                fullMenu.list.classList.remove("visible-menu");
+                fullMenu.icon.classList.remove('rotate-icon');
                 this.dropDownOpen = false;
                 console.log("Drop Menu Closed!");
             } else {
-                ExpandMenu(fullMenu);
-                this.hoveredButton.classList.add("margin-adjustment");
+                nextMenu.classList.add("margin-adjustment");
+                fullMenu.list.classList.add("visible-menu");
+                fullMenu.icon.classList.add('rotate-icon')
                 this.dropDownOpen = true;
                 console.log("Drop Menu Opened!");
             }

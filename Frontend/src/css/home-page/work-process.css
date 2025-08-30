@@ -15,7 +15,9 @@
     #work-process-section .work-list {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        gap: 1rem;
+        margin: 1rem auto 0rem auto;
+        width: fit-content;
         list-style: none;
         position: relative;
         z-index: 1;
@@ -26,14 +28,35 @@
         padding: 1.875rem;
         border-radius: 0.625rem;
         counter-increment: card-counter;
+        max-width: 30rem;
+    }
+
+    @media(pointer: fine) {
+        #work-process-section .work-card:hover {
+            background-color: var(--tertiary-color);
+        }
     }
 
     #work-process-section .work-card::before {
         content: "0"counter(card-counter);
+        position: absolute;
+        font-weight: bold;
+        font-size: 2rem;
+        color: var(--accent-color);
     }
 
     #work-process-section .card-title {
         font-weight: 900;
+    }
+
+    #work-process-section .card-icon-wrapper {
+        width: 4rem;
+        margin-left: auto;
+        padding: 1rem;
+        background-color: #F7F7F7;
+        border-radius: 50%;
+        border: 2px dashed var(--primary-color);
+        margin-bottom: .5rem;
     }
 }
 
@@ -43,25 +66,28 @@
         justify-content: space-between;
         gap: 1rem;
         margin-top: 10.5rem;
+        width: fit-content;
     }
 
     #work-process-section .work-card {
         text-align: center;
         position: relative;
+        max-width: unset;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     /*numbers*/
     #work-process-section .work-card::before {
         display: block;
-        position: absolute;
         left: 50%;
         bottom: 150%;
-        font-weight: bold;
         background-color: var(--secondary-color);
         color: var(--text-color-light);
         padding: 0.625rem;
         border-radius: 50%;
         translate: -50% 0%;
+        font-size: 1rem;
     }
 
     /*vertical dashes*/
@@ -99,5 +125,9 @@
         position: absolute;
         left: 0;
         bottom: 160%;
+    }
+
+    #work-process-section .card-icon-wrapper {
+        margin: auto;
     }
 }

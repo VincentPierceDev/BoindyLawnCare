@@ -24,6 +24,10 @@
         margin: 3rem auto 0rem auto;
     }
 
+    #team-section #logo-wrapper {
+        display: none;
+    }
+
     #team-section #team-card-1 {
         grid-column: 1;
         grid-row: 1;
@@ -80,5 +84,15 @@
     #team-section .flex {
         flex-direction: row;
         gap: 5rem;
+    }
+
+    #team-section #logo-wrapper {
+        display: block;
+        width: 100%;
+        margin: auto;
+        opacity: 50%;
+        user-select: none;
+        -webkit-user-drag: none;
+        pointer-events: none;
     }
 }

@@ -87,7 +87,13 @@
         align-items: center;
         gap: clamp(3rem, 8vw, 10rem);
         margin-top: clamp(4rem, 3vw, 5rem);
-        
+        height: fit-content;
+    }
+
+    @media(orientation: landscape) {
+        #about-container{
+            height: fit-content;
+        }
     }
 
     #about-container .top-content {
@@ -170,6 +176,7 @@
     #about-container .bottom-content {
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
 
     #about-container .section-statement {
@@ -290,6 +297,8 @@
         -webkit-user-drag: none;
         pointer-events: none;
     }
+
+    
 }
 
 @media(min-width: 768px)
@@ -297,7 +306,7 @@
     #about-container {
         flex-direction: row;
         margin-top: 7.5rem;
-        height: 80vh;
+        height: fit-content;
     }
 
     #about-us-section #lettuce-wrapper {
