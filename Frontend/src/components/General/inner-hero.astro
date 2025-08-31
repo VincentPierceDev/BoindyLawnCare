@@ -1,0 +1,60 @@
+---
+import '../../css/general/inner-hero.css';
+import { ImportAvif, ImportWebP, ImportJpg } from '../../_Scripts/build-scripts/ImageImporter';
+
+import desktopBG from '../../assets/images/InnerHeroBackgroundDesktop.jpg';
+import tabletBG from '../../assets/images/InnerHeroBackgroundTablet.jpg';
+import mobileBG from '../../assets/images/InnerHeroBackgroundMobile.jpg';
+
+const AvifDesk = await ImportAvif(desktopBG, desktopBG.width, 'high');
+const WebpDesk = await ImportWebP(desktopBG, desktopBG.width, 'high');
+const JpgDesk = await ImportJpg(desktopBG, desktopBG.width / 2, 'high');
+
+const AvifTablet = await ImportAvif(tabletBG, tabletBG.width, 'high');
+const WebpTablet = await ImportWebP(tabletBG, tabletBG.width, 'high');
+const JpgTablet = await ImportJpg(tabletBG, tabletBG.width / 2, 'high');
+
+const AvifMobile = await ImportAvif(mobileBG, mobileBG.width, 'high');
+const WebpMobile = await ImportWebP(mobileBG, mobileBG.width, 'high');
+const JpgMobile = await ImportJpg(mobileBG, mobileBG.width / 2, 'high');
+
+const desktopObjects = [AvifDesk, WebpDesk, JpgDesk];
+const tabletObjects = [AvifTablet, WebpTablet, JpgTablet];
+const mobileObjects = [AvifMobile, WebpMobile, JpgMobile];
+
+
+const {title} = Astro.props;
+
+
+---
+
+
+<section id="hero-section" class="section">
+    <div class="container">
+        <h1 class="title">{title}</h1>
+        <div class="route-container">
+            <a class="text" href="/">Home</a>
+            <span class="text">{title}</span>
+        </div>
+    </div>
+    <div class="bg-image">
+        <picture>
+            {
+                mobileObjects.map((img) => (
+                    <source media="(max-width: 768px)" srcset={img.src}/>
+                ))
+            }
+            {
+                tabletObjects.map((img) => (
+                    <source media="(max-width: 1024px)" srcset={img.src}/>
+                ))
+            }
+            {
+                desktopObjects.map((img) => (
+                    <source media="(min-width: 1025px)" srcset={img.src}/>
+                ))
+            }
+            <img class="full-image background-texture" src={tabletObjects[1].src} alt="grass texture pattern" loading="eager" decoding="async"/>
+        </picture>
+    </div>
+</section>

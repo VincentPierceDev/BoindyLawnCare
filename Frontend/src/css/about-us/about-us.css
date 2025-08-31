@@ -1,0 +1,107 @@
+@media(min-width: 0px) {
+
+    #our-story-section .content-grid {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-top: clamp(1rem, 2vw, 1.25rem);
+        max-width: 40rem;
+        gap: 3rem;
+    }
+
+    #our-story-section .image-wrapper {
+        width: 100%;
+        height: 100%;
+        border-radius: 0.625rem;
+        overflow: hidden;
+        box-shadow: -5px 5px 0px 2px var(--accent-color);
+    }
+
+    #our-story-section .list-container {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
+    #our-story-section .service-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        margin-bottom: .5rem;
+
+        h3,
+        li:last-of-type {
+            background-color: var(--tertiary-color);
+            color: var(--text-color-dark);
+            padding: 0.25rem;
+            padding-left: 1rem;
+            border-radius: 0.625rem;
+            font-weight: bold;
+        }
+    }
+
+    #our-story-section #stat-wrapper {
+        display: none;
+        background: var(--secondary-color);
+        width: 20rem;
+        height: 20rem;
+        padding: 3rem;
+        margin: auto;
+        border-radius: 50%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: -5px 5px 0px 2px var(--accent-color);
+
+        strong {
+            font-weight: 900;
+        }
+    }
+}
+
+@media(min-width: 768px) {
+    #our-story-section .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        max-width: unset;
+    }
+}
+
+@media(min-width: 1024px) {
+    #our-story-section .content-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: .25fr 1fr 1fr;
+        row-gap: 1rem;
+        column-gap: 2.25rem;
+    }
+
+    #our-story-section #top-image-wrapper {
+        grid-column: 1;
+        grid-row: 2 / span 3;
+    }
+
+    #our-story-section #story-text {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #our-story-section .list-container {
+        grid-column: 2;
+        grid-row: 3 / span 3;
+    }
+
+    #our-story-section #bottom-image-wrapper {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+    }
+
+    #our-story-section #stat-wrapper {
+        display: flex;
+        grid-column: 3;
+        grid-row: 3;
+    }
+
+}

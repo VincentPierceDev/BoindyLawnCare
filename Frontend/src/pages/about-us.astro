@@ -1,7 +1,89 @@
 ---
+import '../css/about-us/about-us.css';
 import Layout from "../layouts/Layout.astro";
+import Hero from '../components/General/inner-hero.astro';
+import StatSection from "../components/home-page/stat-section.astro";
+import TeamSection from "../components/home-page/team-section.astro";
+import ButtonLink from "../components/General/button-link.astro";
+import { ImportAvif, ImportWebP, ImportJpg } from "../_Scripts/build-scripts/ImageImporter";
+
+import topPhoto from '../assets/images/about-page/BushTrimming.jpg';
+import bottomPhoto from '../assets/images/about-page/WeedWhacking.jpg';
+
+const AvifTop = await ImportAvif(topPhoto, topPhoto.width, 'high');
+const WebpTop = await ImportWebP(topPhoto, topPhoto.width, 'high');
+const JpgTop = await ImportJpg(topPhoto, topPhoto.width / 2, 'high');
+
+const AvifBottom = await ImportAvif(bottomPhoto, bottomPhoto.width / 1.2, 'medium');
+const WebpBottom = await ImportWebP(bottomPhoto, bottomPhoto.width / 1.5, 'medium');
+const JpgBottom = await ImportJpg(bottomPhoto, bottomPhoto.width / 2, 'medium');
+
+const topImages = [AvifTop, WebpTop, JpgTop];
+const bottomImages = [AvifBottom, WebpBottom, JpgBottom];
+
 ---
 
 <Layout title="About Us">
-    <h1>About Us</h1>
+    <Hero title="About Us"/>
+    <section id="our-story-section" class="section">
+        <div class="container">
+            <div class="title-container">
+                <span class="topping-text">About Us</span>
+                <h2 class="title">Professional Gardening <br/> and Lawn Service</h2>
+            </div>
+            <div class="content-grid">
+                <div id="top-image-wrapper" class="image-wrapper">
+                    <picture>
+                        {
+                            topImages.map((img) => (
+                                <source srcset={img.src}/>
+                            ))
+                        }
+                        <img class="full-image" src={topImages[1].src} alt="gardener hands cutting bushes with large trimmers" loading="lazy" decoding="async"/>
+                    </picture>
+                </div>
+                <p id="story-text" class="text">
+                    Boindy Lawn Care began as a small family business in the heart of our East Texas community, driven by a passion for creating beautiful outdoor spaces. Starting with just a single mower and a handful of loyal clients, we quickly grew through word of mouth and dedication to quality service. Today, our team combines years of experience with modern techniques to deliver exceptional gardening and lawn care. We believe every yard tells a story, and we’re proud to help our neighbors cultivate landscapes they love.
+                </p>
+                <div class="list-container">
+                    <span class="text">We Do</span>
+                    <ul class="service-list">
+                        <li>
+                            <h3 class="text">Mowing</h3>
+                        </li>
+                        <li>
+                            <h3 class="text">Weed Whacking</h3>
+                        </li>
+                        <li>
+                            <h3 class="text">Hedge Trimming</h3>
+                        </li>
+                        <li>
+                            <h3 class="text">Sprinkler Repairs</h3>
+                        </li>
+                        <li>
+                            <h3 class="text">Grass Seeding</h3>
+                        </li>
+                        <li>
+                            <h3 class="text">Garden Setups</h3>
+                        </li>
+                        <li class="text">And More!</li>
+                    </ul>
+                    <ButtonLink href="/contact" primary="true">Contact Us</ButtonLink>
+                </div>
+                <div id="bottom-image-wrapper" class="image-wrapper">
+                    <picture>
+                        {
+                            bottomImages.map((img) => (
+                                <source srcset={img.src}/>
+                            ))
+                        }
+                        <img class="full-image" src={bottomImages[1].src} alt="gardener with weedwhacker cutting garden grass" loading="lazy" decoding="async"/>
+                    </picture>
+                </div>
+                <span id="stat-wrapper" class="text"><strong class="title">40</strong><br/> Years of Experience</span>
+            </div>
+        </div>
+    </section>
+    <StatSection/>
+    <TeamSection/>
 </Layout>
