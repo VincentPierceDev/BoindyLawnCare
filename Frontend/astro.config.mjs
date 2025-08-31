@@ -14,6 +14,7 @@ export default defineConfig({
   },
   trailingSlash: 'never',
   base: '/',
+  site: 'https://boindylawncare.netlify.app/',
   output: 'static',
   integrations: [],
 });
