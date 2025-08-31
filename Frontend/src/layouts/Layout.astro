@@ -34,13 +34,11 @@ const {title, description} = Astro.props;
 		<meta property="og:site_name" content="Boindy Lawn Care"/>
 		<meta property="og:locale" content="en_US"/>
 		<meta property="og:description" content={description}/>
-		<meta property="og:image" content={WPLObject.src}/>
-		<meta property="og:url" content={`${websiteURL}/`}/>
-		<meta property="og:type" content="website"/>
+		<meta property="og:image" content={`${websiteURL}${WPLObject.src}`}/>
+		<meta property="og:url" content={`${websiteURL}${currentRoute}`}/>
 		<meta property="og:image:width" content={WPLObject.width}/>
 		<meta property="og:image:height" content={WPLObject.height}/>
 		<meta property="og:image:alt" content="Boindy Lawn Care Logo"/>
-		<meta property="og:image:type" content="image/webp"/>
 		<!--------------------->
 		<!-- Open Graph Data -->
 		<!--------------------->
@@ -51,11 +49,8 @@ const {title, description} = Astro.props;
 		<meta name="twitter:card" content="summary_large_image"/>
 		<meta name="twitter:title" content={title}/>
 		<meta name="twitter:description" content={description}/>
-		<meta name="twitter:image" content={WPLObject.src}/>
-		<meta name="twitter:image:width" content={WPLObject.width}/>
-		<meta name="twitter:image:height" content={WPLObject.height}/>
-		<meta name="twitter:image:alt" content="Windy Pines Web Design Logo"/>
-		<meta name="twitter:domain" content="boindylawncare.netlify.app"/>
+		<meta name="twitter:image" content={`${websiteURL}${WPLObject.src}`}/>
+		<meta name="twitter:image:alt" content="Boindy Lawn Care Logo"/>
 		<!----------------------->
 		<!-- Twitter Card Data -->
 		<!----------------------->

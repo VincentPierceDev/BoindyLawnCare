@@ -12,7 +12,7 @@ export default defineConfig({
   build: {
       inlineStylesheets: 'never',
   },
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   base: '/',
   site: 'https://boindylawncare.netlify.app/',
   output: 'static',
