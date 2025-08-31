@@ -28,7 +28,7 @@ const AvifBGDObject = await ImportAvif(BGImageDesktop, BGImageDesktop.width, "me
 const WebpBGDObject = await ImportWebP(BGImageDesktop, BGImageDesktop.width, "medium");
 const JpgBGDObject = await ImportJpg(BGImageDesktop, BGImageDesktop.width / 3, "low");
 
-const mobileBGObjects = [AvifBGMObject, WebpBGMObject, JpgBGMObject];
+const mobileBGObjects = [WebpBGMObject, JpgBGMObject];
 const tabletBGObjects = [AvifBGTObject, WebpBGTObject, JpgBGTObject];
 const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
 ---
@@ -38,7 +38,7 @@ const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
 <Layout title="Boindy Lawn Care" description="Professional lawn care services for residential and commercial properties. Reliable, affordable, and dedicated to making your outdoor spaces beautiful.">
     <slot name="preload">
         <!-- only preload the avif mobile image since it is the most likely candidate -->
-       <link rel="preload" href={mobileBGObjects[0].src} as="image" fetch-priority="high"/>
+       <link rel="preload" href={mobileBGObjects[0].src} as="image" fetchpriority="high"/>
     </slot>
     <Hero mobileBGObjects={mobileBGObjects} tabletBGObjects={tabletBGObjects} desktopBGObjects={desktopBGObjects}/>
     <AboutUs/>

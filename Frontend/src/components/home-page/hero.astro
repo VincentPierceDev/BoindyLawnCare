@@ -23,7 +23,7 @@ const {mobileBGObjects, tabletBGObjects, desktopBGObjects} = Astro.props as any;
                     <source media="(min-width: 1025px)" srcset={img.src}/>
                 ))
             }
-            <img class="full-image" src={tabletBGObjects[1].src} alt="wide view of a beautifully landscaped garden" loading="eager" decoding="async" fetch-priority="high"/>
+            <img class="full-image" src={tabletBGObjects[1].src} alt="wide view of a beautifully landscaped garden" loading="eager" fetchpriority="high" decoding="async"/>
         </picture>
     </div>
     <div class="container hero-content">
