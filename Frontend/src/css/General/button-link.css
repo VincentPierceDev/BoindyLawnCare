@@ -18,6 +18,7 @@
     .secondary-button {
         outline: 2px solid var(--highlight-color);
         transition: .2s ease-out background-color, .2s ease-out outline-color;
+        
     }
 
     @media(pointer: fine)
