@@ -22,7 +22,6 @@ const {title, description} = Astro.props;
 		<link rel="preload" href={globalStyles} as="style"/>
 		<link rel="stylesheet" href={globalStyles}/>
 		
-
 		<title>{title}</title>
 		<meta name="description" content={description}/>
 	</head>
@@ -30,9 +29,11 @@ const {title, description} = Astro.props;
 		<header>
 			<Navbar path={currentRoute}/>
 		</header>
-		<slot />
+		<main>
+			<slot/>
+		</main>
 		<footer>
-			<Footer path={currentRoute}/>
+			<Footer/>
 		</footer>
 	</body>
 </html>

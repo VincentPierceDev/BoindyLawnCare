@@ -26,20 +26,28 @@ const MobileBgImages = [BgImageMobileAvif, BgImageMobileWebP, BgImageMobileJpg];
 
 ---
 
-
 <section id="testimonial-section" class="section">
     <div class="container">
         <div class="title-container">
             <span class="topping-text">Testimonials</span>
             <h2 class="title">Our Client Reviews</h2>
         </div>
-        <div class="testimonial-card">
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quod id odit ratione suscipit animi veniam nobis, aut facilis soluta voluptatibus similique deserunt qui, vitae ipsum corrupti labore? Reprehenderit aut necessitatibus repellat deserunt doloribus aliquam quia libero ipsum eius animi! Vel facilis quae aperiam alias itaque nemo vero dolorum atque.</p>
+        <div id="testimonial-card" class="testimonial-card">
+            <p class="text"></p>
             <div class="author-container">
-                <span class="title">Fiora Fernan</span>
+                <span id="testimonial-author" class="title"></span>
                 <br>
-                <span class="text">Facebook</span>
+                <span id="testimonial-source" class="text"></span>
             </div>
+        </div>
+        <div class="controller-wrapper">
+            <button id="previous-quote-button" class="quote-button">
+                <img class="full-image" src="/icons/google-icons/Chevron.svg" alt="next quote">
+            </button>
+            <div id="quote-point-wrapper"></div>
+            <button id="next-quote-button" class="quote-button">
+                <img class="full-image" src="/icons/google-icons/Chevron.svg" alt="previous quote">
+            </button>
         </div>
     </div>
     <div class="bg-image background-image-wrapper">

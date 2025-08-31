@@ -1,6 +1,6 @@
 ---
 import '../../../css/home-page/utilities/service-card.css';
-const{id, title, description, icon, href, photos, altText} = Astro.props;
+const{id, title, description, icon, href, photos, altText, linkAlt} = Astro.props;
 ---
 
 <div id={id} class="service-card">
@@ -16,10 +16,10 @@ const{id, title, description, icon, href, photos, altText} = Astro.props;
     </div>
     <div class="icon-link-bar">
         <div class="icon-wrapper">
-            <img class="full-image" src={icon} alt="">
+            <img class="full-image" src={icon} alt="" loading="lazy" decoding="async"/>
         </div>
         <a href={href} class="icon-wrapper link">
-            <img src="/icons/google-icons/Arrow.svg" alt="">
+            <img src="/icons/google-icons/Arrow.svg" alt={linkAlt} loading="lazy" decoding="async"/>
         </a>
     </div>
     <h3 class="text">

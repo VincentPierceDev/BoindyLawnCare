@@ -33,40 +33,30 @@ const OperationsPhotos = [OperationsAvifObject, OperationsWebpObject, Operations
 interface CardDetails {
     name: string,
     occuptation: string,
-    socialLinks: string[],
-    socialIcons: any[],
     photos: any
 }
 
 const employee1: CardDetails = {
     name: "Joe Smoe",
     occuptation: "Owner",
-    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
-    socialIcons: [''],
     photos: OwnerPhotos
 } as CardDetails;
 
 const employee2: CardDetails = {
     name: "Carol Cannigan",
     occuptation: "Manager",
-    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
-    socialIcons: [''],
     photos: ManagerPhotos
 }
 
 const employee3: CardDetails = {
     name: "Fred Fraster",
     occuptation: "Head of Marketing",
-    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
-    socialIcons: [''],
     photos: MarketerPhotos
 }
 
 const employee4: CardDetails = {
     name: "Sarah Jane",
     occuptation: "Operations Head",
-    socialLinks: ['https://www.google.com', 'https://www.google.com', 'https://www.google.com', 'https://www.google.com'],
-    socialIcons: [''],
     photos: OperationsPhotos
 }
 
@@ -93,7 +83,7 @@ const employees: CardDetails[] = [employee1, employee2, employee3, employee4] as
             <div class="card-container">
                 {
                     employees.map((employee, idx) => (
-                        <TeamCard id=`team-card-${idx + 1}` name={employee.name} occupation={employee.occuptation} socialIcons={employee.socialIcons} socialLinks={employee.socialLinks} photos={employee.photos}/>
+                        <TeamCard id=`team-card-${idx + 1}` name={employee.name} occupation={employee.occuptation} photos={employee.photos}/>
                     ))
                 }
             </div>

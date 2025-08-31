@@ -49,7 +49,8 @@ interface card{
     href: string,
     img: any[],
     icon: string,
-    altText: string
+    altText: string,
+    linkAlt: string
 }
 
 const cards: card[] = [
@@ -59,7 +60,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceOnePhotos,
         icon: '/icons/farming.svg',
-        altText: 'waist high view of a beautiful garden'
+        altText: 'waist high view of a beautiful garden',
+        linkAlt: "mowing and whacking"
     },
     {
         title: "Landscape Design",
@@ -67,7 +69,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceTwoPhotos,
         icon: '/icons/landscape-design.svg',
-        altText: 'backyard of a nice house with trees'
+        altText: 'backyard of a nice house with trees',
+        linkAlt: "mowing and whacking"
     },
     {
         title: "Garden Maintenance",
@@ -75,7 +78,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceThreePhotos,
         icon: '/icons/google-icons/plant.svg',
-        altText: 'wheelbarrow carrying landscaping equipment and organic material in front of bushes'
+        altText: 'wheelbarrow carrying landscaping equipment and organic material in front of bushes',
+        linkAlt: "mowing and whacking"
     },
     {
         title: "Lawn Fertilization",
@@ -83,7 +87,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceFourPhotos,
         icon: '/icons/fertilizer.svg',
-        altText: 'two hands planting a fresh seedling into the dirt'
+        altText: 'two hands planting a fresh seedling into the dirt',
+        linkAlt: "mowing and whacking"
     },
     {
         title: "Stump & Weed Removal",
@@ -91,7 +96,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceFivePhotos,
         icon: '/icons/tree-stump.svg',
-        altText: 'a long dead stump sitting beside a mossy creek bed'
+        altText: 'a long dead stump sitting beside a mossy creek bed',
+        linkAlt: "mowing and whacking"
     },
     {
         title: "Stone & Hardscaping",
@@ -99,7 +105,8 @@ const cards: card[] = [
         href: '/mowing-and-whacking',
         img: serviceSixPhotos,
         icon: '/icons/stone.svg',
-        altText: 'bricks and tools scattered about, in the process of building a walk way'
+        altText: 'bricks and tools scattered about, in the process of building a walk way',
+        linkAlt: "mowing and whacking"
     }
 ] as card[];
 ---
@@ -123,7 +130,7 @@ const cards: card[] = [
         <div class="service-card-container">
             {
                 cards.map((card, idx) => (
-                    <ServiceCard id=`card-${idx + 1}` title={card.title} description={card.description} photos={card.img} icon={card.icon} href={card.href}/>
+                    <ServiceCard id=`card-${idx + 1}` title={card.title} description={card.description} photos={card.img} icon={card.icon} href={card.href} altText={card.altText} linkAlt={card.linkAlt}/>
                 ))
             }
         </div>

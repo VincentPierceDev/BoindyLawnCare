@@ -95,6 +95,10 @@
         margin: auto 0;
         width: 100%;
         justify-content: center;
+
+        a {
+            color: black;
+        }
     }
 }
 

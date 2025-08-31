@@ -9,6 +9,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 NavBar: path.resolve(__dirname, 'src/_Scripts/Navbar.ts'),
+                Index: path.resolve(__dirname, 'src/_Scripts/Index.ts'),
             },
             output: {
                 entryFileNames: '[name].js',

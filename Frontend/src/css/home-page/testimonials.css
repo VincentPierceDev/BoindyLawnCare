@@ -26,7 +26,6 @@
         flex-direction: column;
         gap: 3rem;
         border-radius: 0.625rem;
-        overflow: hidden;
         box-shadow: -10px 10px 0px 0px rgba(9,51,27,.5), -20px 20px 0px 0px rgba(9, 51, 27, .25);
 
         p {
@@ -34,12 +33,77 @@
         }
     }
 
+    #testimonial-section .testimonial-card.card-swap {
+        box-shadow: -15px 15px 0px 0px rgba(9,51,27,.5), -20px 20px 0px 0px rgba(9,51,27,.4), -30px 30px 0px 0px rgba(9, 51, 27, .2);
+        translate: 10px -10px;
+        transition: box-shadow .2s ease, translate .2s ease;
+        transition-delay: .2s;
+    }
+
+
     #testimonial-section .background-image-wrapper {
         opacity: 0.2;
 
         img {
             user-select: none;
             -webkit-user-drag: none;
+        }
+    }
+
+    #testimonial-section .controller-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 3rem;
+        align-items: center;
+    }
+
+    #testimonial-section #quote-point-wrapper {
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgba(0, 0, 0, .3);
+        padding: 0.5rem;
+        border-radius: 0.625rem;
+        gap: .5rem;
+    }
+
+    #testimonial-section .testimonial-reel-point {
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid #F7F7F7;
+        border-radius: 50%;
+        transition: background-color .2s ease-out;
+    }
+
+    #testimonial-section .current-point {
+        background-color: #F7F7F7;
+        transition: background-color .2s ease;
+    }
+
+    #testimonial-section .quote-button {
+        border: none;
+        background-color: var(--primary-color);
+        border-radius: 0.313rem;
+        transition: .2s ease background-color;
+        
+        img {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(5%) saturate(391%) hue-rotate(272deg) brightness(113%) contrast(94%);
+        }
+    }
+
+    #testimonial-section #previous-quote-button {
+        img {
+            rotate: 180deg;
+        }
+    }
+
+    @media(pointer: fine) {
+        #testimonial-section .quote-button:hover {
+            cursor: pointer;
+            outline: 2px solid var(--accent-color);
+            background-color: var(--secondary-color);
+            transition: .2s ease background-color, .2s ease outline;
         }
     }
 }

@@ -25,9 +25,9 @@ const AvifLogo = await ImportAvif(Logo, Logo.width, "medium");
 const WebpLogo = await ImportWebP(Logo, Logo.width, "medium");
 const PngLogo = await ImportJpg(Logo, Logo.width, "medium");
 
-const AvifLeafHighlight = await ImportAvif(LeafHighlight, LeafHighlight.width, "medium");
-const WebpLeafHighlight = await ImportWebP(LeafHighlight, LeafHighlight.width, "medium");
-const PngLeafHighlight = await ImportJpg(LeafHighlight, LeafHighlight.width, "medium");
+const AvifLeafHighlight = await ImportAvif(LeafHighlight, LeafHighlight.width / 2, "medium");
+const WebpLeafHighlight = await ImportWebP(LeafHighlight, LeafHighlight.width / 2, "medium");
+const PngLeafHighlight = await ImportJpg(LeafHighlight, LeafHighlight.width / 2, "medium");
 
 const facebookLogoSources = [AvifFacebookLogo, WebpFacebookLogo, PngFacebookLogo];
 const youtubeLogoSources = [AvifYoutubeLogo, WebpYoutubeLogo, PngYoutubeLogo];
@@ -124,14 +124,16 @@ console.log(path);
             <li class="link-wrapper">
                 {
                     path == "/" && (
-                        <picture>
-                            {
-                                LeafSources.map((leaf) => (
-                                    <source srcset={leaf.src}/>
-                                ))
-                            }
-                            <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
-                        </picture>
+                        <div class="page-tick-wrapper">
+                            <picture>
+                                {
+                                    LeafSources.map((leaf) => (
+                                        <source srcset={leaf.src}/>
+                                    ))
+                                }
+                                <img class="full-image" src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                            </picture>
+                        </div>
                     )
                 }
                 <a href="/" class="nav-link">Home</a>
@@ -139,14 +141,16 @@ console.log(path);
             <li class="link-wrapper">
                 {
                     path == "/about-us" && (
-                        <picture>
-                            {
-                                LeafSources.map((leaf) => (
-                                    <source srcset={leaf.src}/>
-                                ))
-                            }
-                            <img src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
-                        </picture> 
+                        <div class="page-tick-wrapper">
+                            <picture>
+                                {
+                                    LeafSources.map((leaf) => (
+                                        <source srcset={leaf.src}/>
+                                    ))
+                                }
+                                <img class="full-image" src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                            </picture>
+                        </div>
                     )
                 }
                 <a href="/about-us">About Us</a>
@@ -172,6 +176,20 @@ console.log(path);
                 </ul>
             </li>
             <li id="next-link" class="link-wrapper">
+                {
+                    path == "/blog" && (
+                    <div class="page-tick-wrapper">
+                        <picture>
+                            {
+                                LeafSources.map((leaf) => (
+                                    <source srcset={leaf.src}/>
+                                ))
+                            }
+                            <img class="full-image" src={LeafSources[1].src} alt="Leaf highlight" decoding="async" loading="lazy" fetch-priority="low"/>
+                        </picture>
+                    </div>
+                    )
+                }
                 <a href="/blog">Blog</a>
             </li>
             <li class="link-wrapper">

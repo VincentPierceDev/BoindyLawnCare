@@ -8,6 +8,7 @@ import WorkProcess from '../components/home-page/work-process.astro';
 import StatSection from '../components/home-page/stat-section.astro';
 import TeamSection from '../components/home-page/team-section.astro';
 import TestimonialSection from '../components/home-page/testimonial-section.astro';
+import Footer from '../components/General/footer.astro';
 
 /* mobile imports need to be here, and it just makes sense to keep all the import in the same location for readability */
 /* so I am pasisng all of them */
@@ -32,11 +33,12 @@ const tabletBGObjects = [AvifBGTObject, WebpBGTObject, JpgBGTObject];
 const desktopBGObjects = [AvifBGDObject, WebpBGDObject, JpgBGDObject];
 ---
 
-<Layout title="Boindy Lawn Care">
+<script type="module" src="/Scripts/Index.js" defer></script>
+
+<Layout title="Boindy Lawn Care" description="Professional lawn care services for residential and commercial properties. Reliable, affordable, and dedicated to making your outdoor spaces beautiful.">
     <slot name="preload">
         <!-- only preload the avif mobile image since it is the most likely candidate -->
        <link rel="preload" href={mobileBGObjects[0].src} as="image" fetch-priority="high"/>
-       <link rel="preload" href="GrassStrip.svg" as="image"/>
     </slot>
     <Hero mobileBGObjects={mobileBGObjects} tabletBGObjects={tabletBGObjects} desktopBGObjects={desktopBGObjects}/>
     <AboutUs/>

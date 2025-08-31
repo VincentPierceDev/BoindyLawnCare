@@ -115,11 +115,23 @@
         flex-direction: row;
         align-items: center;
         gap: .25rem;
+        position: relative;
 
         img {
             user-select: none;
             -webkit-user-drag: none;
         }
+    }
+
+    #navbar-links-container .page-tick-wrapper {
+        width: .75rem;
+        margin-bottom: auto;
+        margin-top: auto;
+        display: block;
+        position: absolute;
+        right: 105%;
+        bottom: 50%;
+        translate: 0% 25%;
     }
 
     #navbar-links-container a,
@@ -286,20 +298,22 @@
         display: none;
     }
 
+    #navigation {
+        height: 5rem;
+    }
+
     #navbar-links-container {
         flex: 1;
         padding-right: 4.25rem;
         flex-direction: row;
         position: static;
         background: none;
-        margin-top: auto;
-        margin-bottom: auto;
         width: fit-content;
         align-items: center;
         justify-content: baseline;
         opacity: 1;
         pointer-events: all;
-        height: fit-content;
+        height: 100%;
     }
 
     #navbar-links-container .link-wrapper {
